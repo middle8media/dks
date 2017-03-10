@@ -1,0 +1,3 @@
+{% macro is_active(segment) %}
+    {% if craft.request.firstSegment == segment %}current-menu-item{% endif %}
+{% endmacro %}

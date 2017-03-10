@@ -1,0 +1,7 @@
+{
+    "buttons": ["html","formatting","bold","italic","unorderedlist","orderedlist","link","image","table"],
+    "plugins": ["fullscreen"],
+    "minHeight": 50,
+    "toolbarFixedBox": true,
+    "replaceDivs": false
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- Header hook. Don't delete this. -->
+    <title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+    <link rel="home" href="{{ siteUrl }}" />
+
+    <link rel='stylesheet' href='css/settings.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='css/custom.css' type='text/css' media='screen' />
+    <link rel='stylesheet' href='css/Defaults.css?ver=4.3.1' type='text/css' media='all' />
+    <link rel='stylesheet' href='css/style.css?ver=4.3.1' type='text/css' media='all' />
+    <link rel='stylesheet' href='css/font-awesome.min.css?ver=4.3.1' type='text/css' media='all' />
+    <link rel='stylesheet' href='css/fontello.css?ver=4.3.1' type='text/css' media='all' />
+    <link rel='stylesheet' href='css/animsition.min.css?ver=4.3.1' type='text/css' media='all' />
+    <link rel='stylesheet' href='css/prettyPhoto.css?ver=4.3.1' type='text/css' media='all' />
+    <link rel='stylesheet' href='css/responsive.css?ver=4.3.1' type='text/css' media='all' />
+    <link rel='stylesheet' href='css/woocommerce.css?ver=4.3.1' type='text/css' media='all' />
+    <link rel='stylesheet' href='css/socials.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='css/ultimate.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='css/js_composer.css' type='text/css' media='all' />
+
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900&#038;ver=1.0.0' type='text/css' media='all' />
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900&#038;ver=1.0.0' type='text/css' media='all' />
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Courgette%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900&#038;ver=1.0.0' type='text/css' media='all' />
+</head>
+
+<body class="home page page-id-6 page-template page-template-portfolio page-template-portfolio-php logged-in royal-page-preloader smoothscroll sidebar-fixed menu-fold-style deeplinking single-header-below-b single-header-below-p sharing-nxt-prev-b sharing-nxt-prev-p project-info-right infinitescroll-twitter copy-horizontal-2 open-house wpb-js-composer js-comp-ver-4.9 vc_responsive">
+
+    <!-- Preloader -->
+    <div class="royal-preloader-wrap" data-bg-trans="200"></div>
+
+    <!-- Whole Page Wrapper -->
+    <div id="page-wrap" class="clearfix" data-fx="fade-in-up-sm,fade-out-up-sm" data-fx-speed="700">
+
+        <!-- Mobile Navigation & Logo -->
+        <div class="m-nav-and-logo">
+            <div class="m-nav-fold rf-button">
+                <i class="fa fa-angle-down"></i>
+            </div>
+
+            <!-- Mobile Navigation -->
+            {% include 'partials/mobile-nav.html' %}
+
+            <!-- Mobile Logo & Tagline -->
+            <section class="mobile-logo">
+                <a href="/" title="Hypnos" class="logo-wrap">
+                    <div class="logo-img">
+                        <img src="../../images/dogface.jpg" alt="Hypnos">
+                        <img src="upload/logo-light-1.png" alt="Hypnos">
+                    </div>
+                </a>
+            </section>
+        </div>
+
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <!-- Logo Wrapper -->
+            <section class="logo-and-tagline clearfix">
+                <a href="/" title="Hypnos" class="logo-wrap">
+                    <div class="logo-img">
+                        <img src="../../images/dogface.jpg" alt="Hypnos">
+                        <img src="upload/logo-light-1.png" alt="Hypnos">
+                    </div>
+                </a>
+            </section>
+
+            <!-- Wrap Sidebar Inner Content -->
+            <div class="inner-sidebar clear">
+                <!-- Main Navigation -->
+                <nav class="sid-block" data-open="click">
+                    <h3 class="menu-title"><span>Menu</span></h3>
+
+                    {% include 'partials/main-nav.html' %}
+
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main Content Wrapper -->
+        <div id="main-wrap">
+
+            {% block content %}
+
+            {% endblock %}
+
+        </div>
+
+        <!-- Copyright & Socials -->
+        <footer class="copy-and-soc">
+            <!-- Inner Block -->
+            <div>
+
+                <div class="socials-wrap">
+                    <a href="http://google.com" target="_blank">
+                        <i class="fa fa-facebook rf-button"></i>
+                    </a>
+                    <a href="http://google.com" target="_blank">
+                        <i class="fa fa-twitter rf-button"></i>
+                    </a>
+                    <a href="http://google.com" target="_blank">
+                        <i class="fa fa-linkedin rf-button"></i>
+                    </a>
+                </div>
+
+                <!-- Copyright -->
+                <div class="copyright-wrap">
+                    <p>© {{ now.year }} All rights reserved</a></p>
+                </div>
+
+                <!-- clear floats -->
+                <div class="clear"></div>
+
+            </div>
+            <!-- End Inner Block -->
+        </footer>
+
+        <!-- Back to Top button -->
+        <div class="back-to-top" data-duration="400" data-scroll-top="600">
+            <i class="rf-button fa fa-angle-up"></i>
+        </div>
+
+    </div>
+
+    <script type='text/javascript' src='js/jquery/jquery.js'></script>
+    <script type='text/javascript' src='js/jquery/jquery-migrate.min.js'></script>
+    <script type='text/javascript' src='js/jquery.themepunch.tools.min.js'></script>
+    <script type='text/javascript' src='js/jquery.themepunch.revolution.min.js'></script>
+
+    <script type="text/javascript" src="js/extensions/revolution.extension.video.min.js"></script>
+    <script type="text/javascript" src="js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript" src="js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script type="text/javascript" src="js/extensions/revolution.extension.navigation.min.js"></script>
+    <script type="text/javascript" src="js/extensions/revolution.extension.parallax.min.js"></script>
+
+    <script type='text/javascript' src='js/snazzymaps.js'></script>
+
+    <script type='text/javascript' src='js/SmoothScroll.min.js'></script>
+    <script type='text/javascript' src='js/royal-plugins.min.js'></script>
+    <script type='text/javascript' src='js/custom-scripts.min.js'></script>
+
+</body>
+
+</html>
