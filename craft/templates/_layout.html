@@ -10,7 +10,6 @@
     <link rel="home" href="{{ siteUrl }}" />
 
     <link rel='stylesheet' href='css/settings.css' type='text/css' media='all' />
-    <link rel='stylesheet' href='css/custom.css' type='text/css' media='screen' />
     <link rel='stylesheet' href='css/Defaults.css?ver=4.3.1' type='text/css' media='all' />
     <link rel='stylesheet' href='css/style.css?ver=4.3.1' type='text/css' media='all' />
     <link rel='stylesheet' href='css/font-awesome.min.css?ver=4.3.1' type='text/css' media='all' />
@@ -22,6 +21,8 @@
     <link rel='stylesheet' href='css/socials.css' type='text/css' media='all' />
     <link rel='stylesheet' href='css/ultimate.min.css' type='text/css' media='all' />
     <link rel='stylesheet' href='css/js_composer.css' type='text/css' media='all' />
+
+    <link rel='stylesheet' href='css/custom.css' type='text/css' media='screen' />
 
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900&#038;ver=1.0.0' type='text/css' media='all' />
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900&#038;ver=1.0.0' type='text/css' media='all' />
@@ -49,7 +50,7 @@
             <section class="mobile-logo">
                 <a href="/" title="Hypnos" class="logo-wrap">
                     <div class="logo-img">
-                        <img src="../../images/dogface.jpg" alt="Hypnos">
+                        <img src="../../images/dogface-text.jpg" alt="Hypnos">
                         <img src="upload/logo-light-1.png" alt="Hypnos">
                     </div>
                 </a>
@@ -62,7 +63,7 @@
             <section class="logo-and-tagline clearfix">
                 <a href="/" title="Hypnos" class="logo-wrap">
                     <div class="logo-img">
-                        <img src="../../images/dogface.jpg" alt="Hypnos">
+                        <img src="../../images/dogface-text.jpg" alt="Hypnos">
                         <img src="upload/logo-light-1.png" alt="Hypnos">
                     </div>
                 </a>
@@ -70,58 +71,60 @@
 
             <!-- Wrap Sidebar Inner Content -->
             <div class="inner-sidebar clear">
+
                 <!-- Main Navigation -->
                 <nav class="sid-block" data-open="click">
                     <h3 class="menu-title"><span>Menu</span></h3>
 
                     {% include 'partials/main-nav.html' %}
-
                 </nav>
+
+                {% if categoryNav is defined and categoryNav == true %}
+                    <!-- Porfolio Categories -->
+                    <section class="sid-block">
+                        <h3 class="filters-title">
+                            {# <span>Portfolio Categories</span> #}
+                        </h3>
+
+                        <ul class="filters body-section">
+                            {% for category in craft.categories.group('portfolio') %}
+                                <li>
+                                    <a href="{{ category.url }}" class="{% if craft.request.lastSegment == category.slug %}active-filter-item{% endif %}">{{ category.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </section>
+                {% endif %}
+
             </div>
         </div>
 
         <!-- Main Content Wrapper -->
         <div id="main-wrap">
-
             {% block content %}
 
             {% endblock %}
-
         </div>
 
         <!-- Copyright & Socials -->
         <footer class="copy-and-soc">
-            <!-- Inner Block -->
-            <div>
-
-                <div class="socials-wrap">
-                    <a href="http://google.com" target="_blank">
-                        <i class="fa fa-facebook rf-button"></i>
-                    </a>
-                    <a href="http://google.com" target="_blank">
-                        <i class="fa fa-twitter rf-button"></i>
-                    </a>
-                    <a href="http://google.com" target="_blank">
-                        <i class="fa fa-linkedin rf-button"></i>
-                    </a>
-                </div>
-
-                <!-- Copyright -->
-                <div class="copyright-wrap">
-                    <p>All images © David K. Stanley </a></p>
-                </div>
-
-                <!-- clear floats -->
-                <div class="clear"></div>
-
+            <div class="socials-wrap">
+                <a href="http://google.com" target="_blank">
+                    <i class="fa fa-facebook rf-button"></i>
+                </a>
+                <a href="http://google.com" target="_blank">
+                    <i class="fa fa-twitter rf-button"></i>
+                </a>
+                <a href="http://google.com" target="_blank">
+                    <i class="fa fa-linkedin rf-button"></i>
+                </a>
             </div>
-            <!-- End Inner Block -->
-        </footer>
 
-        <!-- Back to Top button -->
-        <div class="back-to-top" data-duration="400" data-scroll-top="600">
-            <i class="rf-button fa fa-angle-up"></i>
-        </div>
+            <!-- Copyright -->
+            <div class="copyright-wrap">
+                <p>All images © {{ generalInfo.displayName }} </a></p>
+            </div>
+        </footer>
 
     </div>
 

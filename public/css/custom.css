@@ -8,3 +8,70 @@
 .wpb_column > .wpb_wrapper .ult-new-ib{margin-bottom:3px!important;}
 .ult_price_features{padding:15px!important;}
 .ult_price_action_button{padding:14px!important;border-radius:0!important;}
+
+
+/*DKS Custom Styles*/
+
+/*Craft Admin*/
+.admin-edit-button {
+    display: inline-block;
+    border: none !important;
+    border-radius: 3px;
+    line-height: 18px;
+    text-align: center;
+    text-shadow: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    transition: none;
+
+    width: auto;
+    margin: 0 auto 20px;
+    padding: 5px 10px;
+    color: #fff !important;
+    font-weight: bold;
+    background: hsl(8, 67%, 57%);
+
+    &:active,
+    &.active {
+        background: #8c3b2e;
+    }
+
+}
+
+/*Navigation*/
+.filters-title {
+    display: block;
+}
+
+.filters li {
+    display: inline-block;
+}
+
+.filters li a {
+    margin: 5px 5px 5px 0;
+    padding: 2px 8px;
+    background-color: #333;
+    border-radius: 30px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.filters li a.active-filter-item {
+    font-size: 10px !important;
+    font-weight: bold;
+    color: #333;
+}
+
+/*Contact Page*/
+.contact-form {
+    width: calc(60% - 22.5px);
+    width: -webkit-calc(60% - 22.5px);
+}
+
+.contact-info {
+    width: calc(35% - 22.5px);
+    width: -webkit-calc(35% - 22.5px);
+}

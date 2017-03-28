@@ -5,82 +5,45 @@
     <!-- Portfolio Container -->
     <section id="portfolio-container" class="body-section" data-layout="fitRows" data-columns-rate="1" data-gutter-horz="17" data-gutter-vert="17">
 
-        <!-- Begin Post -->
-        <article class="post-format-gallery portfolio-post  post-181 royal_portfolio type-royal_portfolio status-publish format-gallery has-post-thumbnail hentry royal_portfolio_cats-post-format-gallery royal_portfolio_skills-after-effects royal_portfolio_skills-illustrator royal_portfolio_skills-photoshop" id="post-181">
-            <div class="portfolio-post-inner">
-                <!-- Post Media Wrap -->
-                <div class="post-media-wrap">
-                    <div class="post-media-in-wrap">
-                        <!-- Post Media -->
-                        <div class="post-media" data-grayscale="" data-grayscale-trans="1">
-                            <img width="600" height="420" src="../../images/jocko-small.jpg" class="" alt="Editorial" />
-                        </div>
-                        <!-- end .post-media -->
-                        <!-- Post Info Hovers -->
-                        <div class="media-hovers media-hover-fade">
-                            <div class="media-hovers-outer">
-                                <div class="media-hovers-inner">
-                                    <h3 class="post-title ">
-                                        <a href="favorit.html">Editorial</a>
-                                    </h3>
-                                    <a href="/editorial" class="media-hover-link"></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end .media-hovers -->
-                    </div>
-                    <!-- end .post-media-in-wrap -->
-                </div>
-                <!-- end .post-media-wrap -->
-            </div>
-            <!-- end .portfolio-post-inner -->
-        </article>
-        <!-- End Post -->
 
-        <!-- Begin Post -->
-        <article class="post-format-gallery portfolio-post  post-181 royal_portfolio type-royal_portfolio status-publish format-gallery has-post-thumbnail hentry royal_portfolio_cats-post-format-gallery royal_portfolio_skills-after-effects royal_portfolio_skills-illustrator royal_portfolio_skills-photoshop" id="post-181">
-            <div class="portfolio-post-inner">
-                <!-- Post Media Wrap -->
-                <div class="post-media-wrap">
-                    <div class="post-media-in-wrap">
-                        <!-- Post Media -->
-                        <div class="post-media" data-grayscale="" data-grayscale-trans="1">
-                            <!-- Decorational Triangle -->
-                            <div class="triangle-wrap"></div>
-                            <!-- get post format media content -->
-                            <!-- Post Image Overlay -->
-                            <div class="image-overlay">
-                                <a href="favorit.html">
-                                    <i class="fa fa-none"></i>
-                                </a>
-                            </div>
-                            <!-- Post Type Icon -->
-                            <div class="post-format-icon">
-                                <i class="fa fa-picture-o"></i>
-                            </div>
-                            <img width="600" height="420" src="../../images/robin-williams-small.jpg" class="" alt="Editorial" />
-                        </div>
-                        <!-- end .post-media -->
-                        <!-- Post Info Hovers -->
-                        <div class="media-hovers media-hover-fade">
-                            <div class="media-hovers-outer">
-                                <div class="media-hovers-inner">
-                                    <h3 class="post-title ">
-                                        <a href="favorit.html">Caricature</a>
-                                    </h3>
-                                    <a href="/caricature" class="media-hover-link"></a>
+        {% for category in craft.categories.group('portfolio') %}
+
+            {% if category.categoryCoverImage | length %}
+
+                <article class="post-format-gallery portfolio-post">
+                    <div class="portfolio-post-inner">
+                        <!-- Post Media Wrap -->
+                        <div class="post-media-wrap">
+                            <div class="post-media-in-wrap">
+                                <!-- Post Media -->
+                                <div class="post-media" data-grayscale="" data-grayscale-trans="1">
+                                    {% for image in category.categoryCoverImage %}
+                                        <img src="{{ image.getUrl }}" alt="{{ image.title }}" />
+                                    {% endfor %}
                                 </div>
+                                <!-- end .post-media -->
+                                <!-- Post Info Hovers -->
+                                <div class="media-hovers media-hover-fade">
+                                    <div class="media-hovers-outer">
+                                        <div class="media-hovers-inner">
+                                            <h3 class="post-title ">
+                                                <a href="{{ category.url }}">{{ category.title }}</a>
+                                            </h3>
+                                            <a href="{{ category.url }}" class="media-hover-link"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end .media-hovers -->
                             </div>
+                            <!-- end .post-media-in-wrap -->
                         </div>
-                        <!-- end .media-hovers -->
+                        <!-- end .post-media-wrap -->
                     </div>
-                    <!-- end .post-media-in-wrap -->
-                </div>
-                <!-- end .post-media-wrap -->
-            </div>
-            <!-- end .portfolio-post-inner -->
-        </article>
-        <!-- End Post -->
+                    <!-- end .portfolio-post-inner -->
+                </article>
+
+            {% endif %}
+        {% endfor %}
 
     </section>
     <!-- End #portfolio-container -->

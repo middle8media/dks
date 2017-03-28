@@ -4,7 +4,7 @@
     {%- set nodeClasses = [] -%}
 
     {%- if node.active -%}
-        {%- set nodeClasses = nodeClasses|merge(['current-menu-item']) -%}
+        {%- set nodeClasses = nodeClasses|merge(['current-menu-parent']) -%}
     {%- endif -%}
 
     {%- if node.listClass|length -%}

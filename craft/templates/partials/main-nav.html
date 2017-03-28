@@ -4,7 +4,7 @@
     {%- set nodeClasses = [] -%}
 
     {%- if node.active -%}
-        {%- set nodeClasses = nodeClasses|merge(['current-menu-item']) -%}
+        {%- set nodeClasses = nodeClasses|merge(['current-menu-parent']) -%}
     {%- endif -%}
 
     {%- if node.listClass|length -%}
@@ -12,8 +12,23 @@
     {%- endif -%}
 
     <li
-        {% if nodeClasses|length %} class="menu-item {{ nodeClasses|join(' ') }}{% endif %}">
+        {% if nodeClasses|length %} class="menu-item {{ nodeClasses|join(' ') }}{% endif %}"
+
+        {% for category in craft.categories.group('portfolio') %}
+            {% if node.name == 'Portfolio' and craft.request.lastSegment == category.slug %} class="menu-item current-menu-parent" {% endif %}
+        {% endfor %}
+    >
+
         <a href="{{ node.url }}" title="{{ node.name }}"{% if node.blank %} target="_blank"{% endif %}>{{ node.name }}</a>
+
+        {# {% if node.hasChildren %}
+            <ul class="sub-menu nav__level{{ (node.level + 1) }}">
+                {% for subnode in node.children %}
+                    {{ _self.addNodeToNavigation(subnode, loop.index) }}
+                {% endfor %}
+            </ul>
+        {% endif %} #}
+
     </li>
 {% endmacro %}
 
