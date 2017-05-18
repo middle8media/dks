@@ -11,7 +11,7 @@
         </h3>
 
         <ul class="filters body-section">
-            {% for category in craft.categories.group('portfolio') %}
+            {% for category in craft.categories.group('sketchbook') %}
                 <li>
                     <a href="{{ category.url }}" class="{% if craft.request.lastSegment == category.slug %}active-filter-item{% endif %}">{{ category.title }}</a>
                 </li>

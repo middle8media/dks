@@ -6,18 +6,11 @@
     <section id="portfolio-container" class="body-section" data-layout="fitRows" data-columns-rate="1" data-gutter-horz="17" data-gutter-vert="17">
 
 
-        {% for category in craft.categories.group('portfolio') %}
+        {% for category in craft.categories.group('sketchbook') %}
 
             {% if category.categoryCoverImage | length %}
 
-            {% for cat in craft.categories.id('sketchbook') %}
-                {% if cat.title == 'Sketchbook' %}
-                    <a href="pass">
-                {% else %}
-                    <a href="fail">
-                {% endif %}
-                {{ cat.title }}
-            {% endfor %}
+            <a href="{{ category.url }}">
                 <article class="post-format-gallery portfolio-post">
                     <div class="portfolio-post-inner">
                         <!-- Post Media Wrap -->

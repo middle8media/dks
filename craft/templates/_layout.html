@@ -50,8 +50,11 @@
             <section class="mobile-logo">
                 <a href="/" title="Hypnos" class="logo-wrap">
                     <div class="logo-img">
-                        <img src="../../images/dogface-text.jpg" alt="Hypnos">
-                        <img src="upload/logo-light-1.png" alt="Hypnos">
+                        {% set asset = generalInfo.logo.first() %}
+                        {% for asset in generalInfo.logo %}
+                            <img src="{{ asset.url }}" alt="DKS Logo">
+                            <img src="upload/logo-light-1.png" alt="Hypnos">
+                        {% endfor %}
                     </div>
                 </a>
             </section>
@@ -63,8 +66,11 @@
             <section class="logo-and-tagline clearfix">
                 <a href="/" title="Hypnos" class="logo-wrap">
                     <div class="logo-img">
-                        <img src="../../images/dogface-text.jpg" alt="Hypnos">
-                        <img src="upload/logo-light-1.png" alt="Hypnos">
+                        {% set asset = generalInfo.logo.first() %}
+                        {% for asset in generalInfo.logo %}
+                            <img src="{{ asset.url }}" alt="DKS Logo">
+                            <img src="upload/logo-light-1.png" alt="Hypnos">
+                        {% endfor %}
                     </div>
                 </a>
             </section>
