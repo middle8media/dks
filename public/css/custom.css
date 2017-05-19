@@ -48,26 +48,40 @@
 /*Navigation*/
 .filters-title {
     display: block;
+    font-size: 12px !important;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 2px solid #e0e0e0;
+    margin-bottom: 5px;
 }
 
 .filters li {
-    display: inline-block;
+    display: table;
 }
 
 .filters li a {
-    margin: 5px 5px 5px 0;
-    padding: 2px 8px;
-    background-color: #333;
-    border-radius: 30px;
-    font-size: 10px;
-    font-weight: bold;
-    color: #fff;
-}
-
-.filters li a.active-filter-item {
     font-size: 10px !important;
     font-weight: bold;
     color: #333;
+}
+
+.filters li a:hover {
+    font-weight: normal;
+}
+
+.filters li a.active-filter-item {
+    border-bottom: 2px solid #e0e0e0;
+    margin-bottom: 5px;
+}
+
+.filters-children {
+    margin: 5px 0 5px 5px;
+    border-left: 2px solid #E0E0E0;
+    padding: 0 0 0 10px;
+}
+
+.filters-children {
+    display: table;
 }
 
 /*Potfolio*/
@@ -79,7 +93,7 @@
     margin-bottom: 20px;
 }
 
-.category-title a {
+.category-title {
     display: block;
     text-align: center;
     margin-top: 10px;

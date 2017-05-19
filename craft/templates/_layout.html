@@ -9,20 +9,21 @@
     <title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
     <link rel="home" href="{{ siteUrl }}" />
 
-    <link rel='stylesheet' href='css/settings.css' type='text/css' media='all' />
-    <link rel='stylesheet' href='css/Defaults.css?ver=4.3.1' type='text/css' media='all' />
-    <link rel='stylesheet' href='css/style.css?ver=4.3.1' type='text/css' media='all' />
-    <link rel='stylesheet' href='css/font-awesome.min.css?ver=4.3.1' type='text/css' media='all' />
-    <link rel='stylesheet' href='css/fontello.css?ver=4.3.1' type='text/css' media='all' />
-    <link rel='stylesheet' href='css/animsition.min.css?ver=4.3.1' type='text/css' media='all' />
-    <link rel='stylesheet' href='css/prettyPhoto.css?ver=4.3.1' type='text/css' media='all' />
-    <link rel='stylesheet' href='css/responsive.css?ver=4.3.1' type='text/css' media='all' />
-    <link rel='stylesheet' href='css/woocommerce.css?ver=4.3.1' type='text/css' media='all' />
-    <link rel='stylesheet' href='css/socials.css' type='text/css' media='all' />
-    <link rel='stylesheet' href='css/ultimate.min.css' type='text/css' media='all' />
-    <link rel='stylesheet' href='css/js_composer.css' type='text/css' media='all' />
+    {% set environmentVariables = craft.config.get('environmentVariables') %}
+    <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/settings.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/Defaults.css?ver=4.3.1' type='text/css' media='all' />
+    <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/style.css?ver=4.3.1' type='text/css' media='all' />
+    <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/font-awesome.min.css?ver=4.3.1' type='text/css' media='all' />
+    <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/fontello.css?ver=4.3.1' type='text/css' media='all' />
+    <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/animsition.min.css?ver=4.3.1' type='text/css' media='all' />
+    <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/prettyPhoto.css?ver=4.3.1' type='text/css' media='all' />
+    <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/responsive.css?ver=4.3.1' type='text/css' media='all' />
+    {# <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/woocommerce.css?ver=4.3.1' type='text/css' media='all' /> #}
+    <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/socials.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/ultimate.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/js_composer.css' type='text/css' media='all' />
 
-    <link rel='stylesheet' href='css/custom.css' type='text/css' media='screen' />
+    <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/custom.css' type='text/css' media='screen' />
 
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900&#038;ver=1.0.0' type='text/css' media='all' />
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900&#038;ver=1.0.0' type='text/css' media='all' />
@@ -53,7 +54,7 @@
                         {% set asset = generalInfo.logo.first() %}
                         {% for asset in generalInfo.logo %}
                             <img src="{{ asset.url }}" alt="DKS Logo">
-                            <img src="upload/logo-light-1.png" alt="Hypnos">
+                            <img src="" alt="Hypnos">
                         {% endfor %}
                     </div>
                 </a>
@@ -69,7 +70,7 @@
                         {% set asset = generalInfo.logo.first() %}
                         {% for asset in generalInfo.logo %}
                             <img src="{{ asset.url }}" alt="DKS Logo">
-                            <img src="upload/logo-light-1.png" alt="Hypnos">
+                            <img src="" alt="Hypnos">
                         {% endfor %}
                     </div>
                 </a>
@@ -88,16 +89,19 @@
                 {% if categoryNav is defined and categoryNav == true %}
                     <!-- Porfolio Categories -->
                     <section class="sid-block">
-                        <h3 class="filters-title">
-                            {# <span>Portfolio Categories</span> #}
-                        </h3>
+                        {# <h3 class="filters-title">Categories</h3> #}
 
                         <ul class="filters body-section">
-                            {% for category in craft.categories.group('portfolio') %}
+                            {% nav category in craft.categories.group('portfolio') %}
                                 <li>
                                     <a href="{{ category.url }}" class="{% if craft.request.lastSegment == category.slug %}active-filter-item{% endif %}">{{ category.title }}</a>
+                                    {% ifchildren %}
+                                        <ul class="filters-children">
+                                            {% children %}
+                                        </ul>
+                                    {% endifchildren %}
                                 </li>
-                            {% endfor %}
+                            {% endnav %}
                         </ul>
                     </section>
                 {% endif %}
@@ -134,22 +138,22 @@
 
     </div>
 
-    <script type='text/javascript' src='js/jquery/jquery.js'></script>
-    <script type='text/javascript' src='js/jquery/jquery-migrate.min.js'></script>
-    <script type='text/javascript' src='js/jquery.themepunch.tools.min.js'></script>
-    <script type='text/javascript' src='js/jquery.themepunch.revolution.min.js'></script>
+    <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/jquery/jquery.js'></script>
+    {# <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/jquery/jquery-migrate.min.js'></script> #}
+    {# <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/jquery.themepunch.tools.min.js'></script> #}
+    {# <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/jquery.themepunch.revolution.min.js'></script> #}
 
-    <script type="text/javascript" src="js/extensions/revolution.extension.video.min.js"></script>
-    <script type="text/javascript" src="js/extensions/revolution.extension.slideanims.min.js"></script>
-    <script type="text/javascript" src="js/extensions/revolution.extension.layeranimation.min.js"></script>
-    <script type="text/javascript" src="js/extensions/revolution.extension.navigation.min.js"></script>
-    <script type="text/javascript" src="js/extensions/revolution.extension.parallax.min.js"></script>
+    {# <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/extensions/revolution.extension.video.min.js'></script> #}
+    {# <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/extensions/revolution.extension.slideanims.min.js'></script> #}
+    {# <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/extensions/revolution.extension.layeranimation.min.js'></script> #}
+    {# <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/extensions/revolution.extension.navigation.min.js'></script> #}
+    {# <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/extensions/revolution.extension.parallax.min.js'></script> #}
 
-    <script type='text/javascript' src='js/snazzymaps.js'></script>
+    {# <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/snazzymaps.js'></script> #}
+    {# <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/SmoothScroll.min.js'></script> #}
 
-    <script type='text/javascript' src='js/SmoothScroll.min.js'></script>
-    <script type='text/javascript' src='js/royal-plugins.min.js'></script>
-    <script type='text/javascript' src='js/custom-scripts.min.js'></script>
+    <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/royal-plugins.min.js'></script>
+    <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/custom-scripts.min.js'></script>
 
 </body>
 

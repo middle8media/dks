@@ -22,7 +22,8 @@ return array(
         'enableCsrfProtection' => true,
 
         // Control Panel trigger word
-        'cpTrigger' => 'admin'
+        'cpTrigger' => 'admin',
+
     ],
 
     // overrides for local dev url

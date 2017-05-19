@@ -5,59 +5,37 @@
     <!-- Portfolio Container -->
     <section id="portfolio-container" class="body-section" data-layout="fitRows" data-columns-rate="1" data-gutter-horz="17" data-gutter-vert="17">
 
-
-        {% for category in craft.categories.group('portfolio') %}
-
-            {% if category.categoryCoverImage | length %}
-
-            {% for cat in craft.categories.id('sketchbook') %}
-                {% if cat.title == 'Sketchbook' %}
-                    <a href="pass">
-                {% else %}
-                    <a href="fail">
-                {% endif %}
-                {{ cat.title }}
-            {% endfor %}
-                <article class="post-format-gallery portfolio-post">
-                    <div class="portfolio-post-inner">
-                        <!-- Post Media Wrap -->
-                        <div class="post-media-wrap">
-                            <div class="post-media-in-wrap">
-                                <!-- Post Media -->
-                                <div class="post-media" data-grayscale="" data-grayscale-trans="1">
+        {% for category in craft.categories.group('portfolio').level(1) %}
+            <article class="post-format-gallery portfolio-post">
+                <div class="portfolio-post-inner">
+                    <div class="post-media-wrap">
+                        <div class="post-media-in-wrap">
+                            <div class="post-media" data-grayscale="" data-grayscale-trans="1">
+                                <a href="{% if category.children | length %}{{ category.title | lower }}/index.html{% else %}{{ category.url }}{% endif %}">
                                     {% for image in category.categoryCoverImage %}
                                         <img src="{{ image.getUrl }}" alt="{{ image.title }}" />
                                     {% endfor %}
-                                </div>
-                                <!-- end .post-media -->
-                                <!-- Post Info Hovers -->
-                                <div class="media-hovers media-hover-fade">
-                                    <div class="media-hovers-outer">
-                                        <div class="media-hovers-inner">
-                                            <h3 class="post-title">
-                                                <a href="{{ category.url }}">{{ category.title }}</a>
-                                            </h3>
-                                            <a href="{{ category.url }}" class="media-hover-link"></a>
-                                        </div>
+                                </a>
+                            </div>
+                            <div class="media-hovers media-hover-fade">
+                                <div class="media-hovers-outer">
+                                    <div class="media-hovers-inner">
+                                        <h3 class="post-title">
+                                            <a href="{% if category.children | length %}{{ category.title | lower }}/index.html{% else %}{{ category.url }}{% endif %}">{{ category.title }}</a>
+                                        </h3>
+                                        <a href="{% if category.children | length %}{{ category.title | lower }}/index.html{% else %}{{ category.url }}{% endif %}" class="media-hover-link"></a>
                                     </div>
                                 </div>
-                                <!-- end .media-hovers -->
                             </div>
-                            <!-- end .post-media-in-wrap -->
-                            <h3 class="category-title">
-                                <a href="{{ category.url }}">{{ category.title }}</a>
-                            </h3>
                         </div>
-                        <!-- end .post-media-wrap -->
+                        <h3 class="category-title">
+                            <a href="{{ category.url }}">{{ category.title }}</a>
+                        </h3>
                     </div>
-                    <!-- end .portfolio-post-inner -->
-                </article>
-            </a>
-
-            {% endif %}
+                </div>
+            </article>
         {% endfor %}
 
     </section>
-    <!-- End #portfolio-container -->
 
 {% endblock %}
