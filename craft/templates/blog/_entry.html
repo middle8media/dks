@@ -1,0 +1,54 @@
+{#
+ # News entry template
+ # -------------------
+ #
+ # This template gets loaded whenever a News entry’s URL is
+ # requested. That’s because the News section’s Template setting is
+ # set to “news/_entry”, the path to this template.
+ #
+ # When this template is loaded, it will already have an ‘entry’
+ # variable, set to the requested News entry.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layout" %}
+
+{% block content %}
+	<article>
+
+		{% for image in entry.blogThumbnail %}
+			<img width="600" height="400" class="" src="{{ image.getUrl }}" alt="{{ entry.title }}"/>
+		{% endfor %}
+
+		<header class="single-header blog-single-header inner-content">
+			<div class="title-and-meta">
+				<h1 class="single-title">{{ entry.title }}</h1>
+				<span class="post-meta-info single-meta">
+					{{ entry.postDate.format('F d, Y') }}
+				</span>
+			</div>
+		</header>
+
+		<div class="clear"></div>
+
+		<div class="single-content-wrap inner-content">
+			<div class="single-content clearfix">
+				{{ entry.blogBody }}
+			</div>
+
+			<h3 class="single-post-sharing">
+				<a class="previous-post rf-button" href="" title="Audio Embed">
+					<i class="fa fa-none-left"></i>
+					<span>Previous Post</span>
+				</a>
+
+				<a class="next-post rf-button" href="http://wp-royal.com/hyper-x/hypnos/quote-post/" title="Quote Post">
+					 <span>Next Post</span></i>
+				 </a>
+			</h3>
+		</div>
+
+	</article>
+{% endblock %}

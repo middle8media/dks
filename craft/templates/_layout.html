@@ -70,7 +70,7 @@
                         {% set asset = generalInfo.logo.first() %}
                         {% for asset in generalInfo.logo %}
                             <img src="{{ asset.url }}" alt="DKS Logo">
-                            <img src="" alt="Hypnos">
+                            <img src="{{ asset.url }}" alt="DKS Logo">
                         {% endfor %}
                     </div>
                 </a>
