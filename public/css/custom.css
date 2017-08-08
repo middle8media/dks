@@ -12,6 +12,23 @@
 
 /*DKS Custom Styles*/
 
+.single-content h3.display-name {
+    margin-bottom: 0;
+    line-height: 25px;
+}
+
+.job-title {
+    margin-bottom: 20px;
+}
+
+p.coming-soon {
+    background: black;
+    padding: 200px 0;
+    text-align: center;
+    font-size: 40px;
+    color: white;
+}
+
 /*Craft Admin*/
 .admin-edit-button {
     display: inline-block;

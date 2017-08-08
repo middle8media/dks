@@ -16,15 +16,7 @@
         <div class="contact-form-wrap inner-content body-section" style="padding-top: 0 !important;">
 
             <section class="contact-form ">
-                <h3 class="contact-title"><span>Send Message</span></h3>
-                <form id="contact-form" action="#">
-                    <input name="name" id="name" type="text" class="rf-input pers-name " data-placeholder="*Name" value="*Name" aria-required="true">
-                    <input name="mail" id="mail" type="text"  class="rf-input pers-email " data-placeholder="*Email" value="*Email" aria-required="true">
-                    <input name="subject" id="subject" type="text"  class="rf-input" data-placeholder="Subject" value="Subject">
-                    <textarea name="comment" id="comment" class="rf-input pers-message " rows="8" data-placeholder="*Message">*Message</textarea>
-                    <input type="submit" id="submit_contact" value="Send Message" class="submit-btn rf-button">
-                    <div id="msg" class="message"></div>
-                </form>
+                <img src="http://davidstanleyillustration.dev:8888/uploads/about/David-Stanley.jpg" alt="">
             </section>
 
             <aside class="contact-info">
@@ -32,7 +24,6 @@
                 <h3 class="contact-title"><span>Contact Info</span></h3>
 
                 <ul>
-                    <li><span>Address: <strong>{{ generalInfo.address }}</strong></span></li>
                     <li><span>Mobile: <strong><a href="tel:{{ generalInfo.phoneNumber }}">{{ generalInfo.phoneNumber }}</a></strong></span></li>
                     <li><span>Email: <strong><a href="mailto:{{ generalInfo.email }}">{{ generalInfo.email }}</a></strong></span></li>
                 </ul>

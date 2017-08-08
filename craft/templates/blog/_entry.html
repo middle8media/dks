@@ -13,13 +13,18 @@
  # http://craftcms.com/docs/routing
  #}
 
-{% extends "_layout" %}
+{% extends "blog/_layout" %}
 
 {% block content %}
+
+{% paginate craft.entries.section('blog').limit(1) as pageInfo, pageEntries %}
+
+{% for entry in pageEntries %}
+
 	<article>
 
 		{% for image in entry.blogThumbnail %}
-			<img width="600" height="400" class="" src="{{ image.getUrl }}" alt="{{ entry.title }}"/>
+			<img class="" src="{{ image.getUrl }}" alt="{{ entry.title }}"/>
 		{% endfor %}
 
 		<header class="single-header blog-single-header inner-content">
@@ -39,16 +44,23 @@
 			</div>
 
 			<h3 class="single-post-sharing">
-				<a class="previous-post rf-button" href="" title="Audio Embed">
-					<i class="fa fa-none-left"></i>
-					<span>Previous Post</span>
-				</a>
+                {% if pageInfo.prevUrl %}
+    				<a class="previous-post rf-button" href="{{ pageInfo.prevUrl }}" title="Audio Embed">
+    					<i class="fa fa-none-left"></i>
+    					<span>Previous</span>
+    				</a>
+                {% endif %}
 
-				<a class="next-post rf-button" href="http://wp-royal.com/hyper-x/hypnos/quote-post/" title="Quote Post">
-					 <span>Next Post</span></i>
-				 </a>
+                {% if pageInfo.nextUrl %}
+    				<a class="next-post rf-button" href="{{ pageInfo.nextUrl }}" title="Quote Post">
+    					 <span>Next</span></i>
+    				 </a>
+                 {% endif %}
 			</h3>
 		</div>
 
 	</article>
+
+{% endfor %}
+
 {% endblock %}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- Header hook. Don't delete this. -->
+    <title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+    <link rel="home" href="{{ siteUrl }}" />
+
+    {% set environmentVariables = craft.config.get('environmentVariables') %}
+    <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/settings.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/Defaults.css?ver=4.3.1' type='text/css' media='all' />
+    <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/style.css?ver=4.3.1' type='text/css' media='all' />
+    <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/font-awesome.min.css?ver=4.3.1' type='text/css' media='all' />
+    <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/fontello.css?ver=4.3.1' type='text/css' media='all' />
+    <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/animsition.min.css?ver=4.3.1' type='text/css' media='all' />
+    <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/prettyPhoto.css?ver=4.3.1' type='text/css' media='all' />
+    <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/responsive.css?ver=4.3.1' type='text/css' media='all' />
+    {# <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/woocommerce.css?ver=4.3.1' type='text/css' media='all' /> #}
+    <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/socials.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/ultimate.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/js_composer.css' type='text/css' media='all' />
+
+    <link rel='stylesheet' href='{{ environmentVariables.siteUrl }}css/custom.css' type='text/css' media='screen' />
+
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900&#038;ver=1.0.0' type='text/css' media='all' />
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900&#038;ver=1.0.0' type='text/css' media='all' />
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Courgette%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900&#038;ver=1.0.0' type='text/css' media='all' />
+</head>
+
+<body class="single-post royal-page-preloader smoothscroll sidebar-fixed menu-fold-style deeplinking single-header-below-b single-header-below-p sharing-nxt-prev-b sharing-nxt-prev-p project-info-right infinitescroll-twitter copy-horizontal-2 open-house wpb-js-composer js-comp-ver-4.9 vc_responsive">
+
+    <!-- Preloader -->
+    <div class="royal-preloader-wrap" data-bg-trans="200"></div>
+
+    <!-- Whole Page Wrapper -->
+    <div id="page-wrap" class="clearfix" data-fx="fade-in-up-sm,fade-out-up-sm" data-fx-speed="700">
+
+        <!-- Mobile Navigation & Logo -->
+        <div class="m-nav-and-logo">
+            <div class="m-nav-fold rf-button">
+                <i class="fa fa-angle-down"></i>
+            </div>
+
+            <!-- Mobile Navigation -->
+            {% include 'partials/mobile-nav.html' %}
+
+            <!-- Mobile Logo & Tagline -->
+            <section class="mobile-logo">
+                <a href="/" title="Hypnos" class="logo-wrap">
+                    <div class="logo-img">
+                        {% set asset = generalInfo.logo.first() %}
+                        {% for asset in generalInfo.logo %}
+                            <img src="{{ asset.url }}" alt="DKS Logo">
+                            <img src="" alt="Hypnos">
+                        {% endfor %}
+                    </div>
+                </a>
+            </section>
+        </div>
+
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <!-- Logo Wrapper -->
+            <section class="logo-and-tagline clearfix">
+                <a href="/" title="Hypnos" class="logo-wrap">
+                    <div class="logo-img">
+                        {% set asset = generalInfo.logo.first() %}
+                        {% for asset in generalInfo.logo %}
+                            <img src="{{ asset.url }}" alt="DKS Logo">
+                            <img src="{{ asset.url }}" alt="DKS Logo">
+                        {% endfor %}
+                    </div>
+                </a>
+            </section>
+
+            <!-- Wrap Sidebar Inner Content -->
+            <div class="inner-sidebar clear">
+
+                <!-- Main Navigation -->
+                <nav class="sid-block" data-open="click">
+                    <h3 class="menu-title"><span>Menu</span></h3>
+
+                    {% include 'partials/main-nav.html' %}
+                </nav>
+
+                {% if categoryNav is defined and categoryNav == true %}
+                    <!-- Porfolio Categories -->
+                    <section class="sid-block">
+                        {# <h3 class="filters-title">Categories</h3> #}
+
+                        <ul class="filters body-section">
+                            {% nav category in craft.categories.group('portfolio') %}
+                                <li>
+                                    <a href="{{ category.url }}" class="{% if craft.request.lastSegment == category.slug %}active-filter-item{% endif %}">{{ category.title }}</a>
+                                    {% ifchildren %}
+                                        <ul class="filters-children">
+                                            {% children %}
+                                        </ul>
+                                    {% endifchildren %}
+                                </li>
+                            {% endnav %}
+                        </ul>
+                    </section>
+                {% endif %}
+
+            </div>
+        </div>
+
+        <!-- Main Content Wrapper -->
+        <div id="main-wrap">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+
+        <!-- Copyright & Socials -->
+        <footer class="copy-and-soc">
+            <div class="socials-wrap">
+                <a href="http://google.com" target="_blank">
+                    <i class="fa fa-facebook rf-button"></i>
+                </a>
+                <a href="http://google.com" target="_blank">
+                    <i class="fa fa-twitter rf-button"></i>
+                </a>
+                <a href="http://google.com" target="_blank">
+                    <i class="fa fa-linkedin rf-button"></i>
+                </a>
+            </div>
+
+            <!-- Copyright -->
+            <div class="copyright-wrap">
+                <p>All images © {{ generalInfo.displayName }} </a></p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/jquery/jquery.js'></script>
+    {# <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/jquery/jquery-migrate.min.js'></script> #}
+    {# <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/jquery.themepunch.tools.min.js'></script> #}
+    {# <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/jquery.themepunch.revolution.min.js'></script> #}
+
+    {# <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/extensions/revolution.extension.video.min.js'></script> #}
+    {# <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/extensions/revolution.extension.slideanims.min.js'></script> #}
+    {# <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/extensions/revolution.extension.layeranimation.min.js'></script> #}
+    {# <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/extensions/revolution.extension.navigation.min.js'></script> #}
+    {# <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/extensions/revolution.extension.parallax.min.js'></script> #}
+
+    {# <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/snazzymaps.js'></script> #}
+    {# <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/SmoothScroll.min.js'></script> #}
+
+    <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/royal-plugins.min.js'></script>
+    <script type='text/javascript' src='{{ environmentVariables.siteUrl }}js/custom-scripts.min.js'></script>
+
+</body>
+
+</html>
