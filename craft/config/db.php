@@ -8,20 +8,27 @@
  */
 
 return array(
-
-	// The database server name or IP address. Usually this is 'localhost' or '127.0.0.1'.
-	'server' => 'localhost',
-
-	// The name of the database to select.
-	'database' => 'dks_db',
-
-	// The database username to connect with.
-	'user' => 'root',
-
-	// The database password to connect with.
-	'password' => 'root',
-
-	// The prefix to use when naming tables. This can be no more than 5 characters.
-	'tablePrefix' => 'craft',
-
+    '*' => array(
+        'tablePrefix' => 'craft',
+    ),
+    // development database
+    '.dev' => array(
+        'server' => 'localhost',
+        'user' => 'root',
+        'password' => 'root',
+        'database' => 'dks_db',
+    ),
+    // production databases
+    '.studio' => array(
+        'server' => '127.0.0.1',
+        'user' => 'dkstanley',
+        'password' => 'hvs704fOjw`E_Vn$G"',
+        'database' => 'dks_db',
+    ),
+    '.com' => array(
+        'server' => '127.0.0.1',
+        'user' => 'dkstanley',
+        'password' => 'hvs704fOjw`E_Vn$G"',
+        'database' => 'dks_db',
+    ),
 );

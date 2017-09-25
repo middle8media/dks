@@ -1,0 +1,75 @@
+{% set title = "About" %}
+
+{% extends "_layout" %}
+
+{% block content %}
+
+    {% for about in craft.entries.section('about') %}
+    <!-- Inner Content Wrapper -->
+    <div class="inner-content-wrap">
+
+        <!-- Page Content -->
+        <section class="inner-content body-section clearfix" style="padding-top: 0 !important;">
+
+            <div class="single-content">
+                <div class="vc_row wpb_row vc_row-fluid" style="padding-top: 0 !important;">
+                    <div class="wpb_column vc_column_container vc_col-sm-12">
+
+                        <div class="vc_column-inner ">
+                            <div class="wpb_wrapper">
+
+                                <div class="ult-new-ib ult-ib-effect-style5 ult-ib-resp " data-min-width="768" data-max-width="900" style="" data-opacity="1" data-hover-opacity="0.8">
+                                    {% for entry in craft.entries.section('about') %}
+                                        <div class="gallery-slide">
+
+                                            {% set image = entry.aboutImage.first() %}
+                                            {% set logo = craft.assets({ id: 133 }).first() %}
+                                            {% set watermarkedImage = craft.imager.transformImage(image, {
+                                            	watermark: { image: logo, width: 428, height: 105, position: { right: 1000, top: 750 }, opacity: 0.8, blendMode: 'blend' }
+                                            }) %}
+
+                                            <img src="{{ watermarkedImage.url }}">
+                                        </div>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="uvc-main-heading ult-responsive" data-ultimate-target='.uvc-heading h3' data-responsive-json-new='{"font-size":"","line-height":""}'>
+                                    <h3 class="display-name" style="font-family:'Montserrat';font-weight:normal;font-style:normal;color:#444444;">{{ generalInfo.displayName }}</h3>
+                                </div>
+
+                                <div id="ultimate-heading-6604573c37a868633" class="job-title uvc-heading" data-hspacer="no_spacer" data-halign="left" style="text-align:left">
+                                    <div class="uvc-sub-heading ult-responsive" data-ultimate-target='.uvc-heading .uvc-sub-heading ' data-responsive-json-new='{"font-size":"desktop:13px;","line-height":"desktop:25px;"}' style="font-family:'Dosis';font-weight:700;color:#e5ae47;">{{ generalInfo.jobTitle }}</div>
+                                </div>
+
+                                <div class="uvc-heading" data-hspacer="no_spacer" data-halign="left" style="text-align:left">
+
+                                    <div class="uvc-sub-heading ult-responsive" data-ultimate-target='.uvc-heading .uvc-sub-heading ' data-responsive-json-new='{"font-size":"desktop:16px;","line-height":"desktop:25px;"}' style="font-family:'Dosis';font-weight:normal;color:#8d8d8d;">
+                                        <div class="wpb_text_column wpb_content_element ">
+                                            <div class="wpb_wrapper">
+                                                {% for about in craft.entries.section('about') %}
+                                                    {{ about.aboutBody }}
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+    {% endfor %}
+
+    {% if entry.isEditable() %}
+        <p>
+            <div class="admin-edit-button-wrapper">
+                <a href="{{ entry.cpEditUrl }}" class="admin-edit-button">Edit About Page</a>
+            </div>
+        </p>
+    {% endif %}
+
+{% endblock %}

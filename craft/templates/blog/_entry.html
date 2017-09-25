@@ -17,50 +17,35 @@
 
 {% block content %}
 
-{% paginate craft.entries.section('blog').limit(1) as pageInfo, pageEntries %}
+<article>
 
-{% for entry in pageEntries %}
+	{% for image in entry.blogThumbnail %}
+		<img class="" src="{{ image.getUrl }}" alt="{{ entry.title }}"/>
+	{% endfor %}
 
-	<article>
+	<header class="single-header blog-single-header inner-content">
+		<div class="title-and-meta">
+			<h1 class="single-title">{{ entry.title }}</h1>
+			<span class="post-meta-info single-meta">
+				{{ entry.postDate.format('F d, Y') }}
+			</span>
+		</div>
+	</header>
 
-		{% for image in entry.blogThumbnail %}
-			<img class="" src="{{ image.getUrl }}" alt="{{ entry.title }}"/>
-		{% endfor %}
+	<div class="clear"></div>
 
-		<header class="single-header blog-single-header inner-content">
-			<div class="title-and-meta">
-				<h1 class="single-title">{{ entry.title }}</h1>
-				<span class="post-meta-info single-meta">
-					{{ entry.postDate.format('F d, Y') }}
-				</span>
-			</div>
-		</header>
-
-		<div class="clear"></div>
-
-		<div class="single-content-wrap inner-content">
-			<div class="single-content clearfix">
-				{{ entry.blogBody }}
-			</div>
-
-			<h3 class="single-post-sharing">
-                {% if pageInfo.prevUrl %}
-    				<a class="previous-post rf-button" href="{{ pageInfo.prevUrl }}" title="Audio Embed">
-    					<i class="fa fa-none-left"></i>
-    					<span>Previous</span>
-    				</a>
-                {% endif %}
-
-                {% if pageInfo.nextUrl %}
-    				<a class="next-post rf-button" href="{{ pageInfo.nextUrl }}" title="Quote Post">
-    					 <span>Next</span></i>
-    				 </a>
-                 {% endif %}
-			</h3>
+	<div class="single-content-wrap inner-content">
+		<div class="single-content clearfix">
+			{{ entry.blogBody }}
 		</div>
 
-	</article>
+		<div class="">
+			<a href="/blog">← Back to Blog</a>
+		</div>
+	</div>
 
-{% endfor %}
+</article>
+
+{% endpaginate %}
 
 {% endblock %}

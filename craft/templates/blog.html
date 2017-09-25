@@ -7,7 +7,9 @@
             <!-- Blog Filters -->
             <section id="blog-container" class="body-section" data-layout="fitRows" data-columns-rate="0" data-gutter-horz="17" data-gutter-vert="32" data-aspect-width="600" data-aspect-height="400"  >
 
-                {% for entry in craft.entries.section('blog') %}
+                {% paginate craft.entries.section('blog').limit(6) as pageInfo, pageEntries %}
+
+                {% for entry in pageEntries %}
                     <article class="post-format-gallery blog-post  post-23 post type-post status-publish format-standard has-post-thumbnail hentry category-post-format-gallery tag-post-formats tag-standard" id="post-23">
                         <div class="blog-post-inner">
 
@@ -47,8 +49,26 @@
                         <!-- End .blog-post-inner -->
                     </article>
                 {% endfor %}
-
             </section>
+
+            <div class="single-post sharing-nxt-prev-b"> {# this is a hack #}
+                <div class="single-content-wrap inner-content">
+                    <h3 class="single-post-sharing">
+                        {% if pageInfo.prevUrl %}
+                            <a class="previous-post rf-button" href="{{ pageInfo.prevUrl }}" title="Audio Embed">
+                                <i class="fa fa-none-left"></i>
+                                <span>Previous</span>
+                            </a>
+                        {% endif %}
+
+                        {% if pageInfo.nextUrl %}
+                            <a class="next-post rf-button" href="{{ pageInfo.nextUrl }}" title="Quote Post">
+                                <span>Next</span></i>
+                            </a>
+                        {% endif %}
+                    </h3>
+                </div>
+            </div>
             <!-- End #blog-container -->
 
 {% endblock %}

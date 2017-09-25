@@ -12,7 +12,7 @@ return array(
     // applies to all domains
     '*' => [
         'phpMaxMemoryLimit' => '6400M',
-        'omitScriptNameInUrls' => 'true',
+        'omitScriptNameInUrls' => true,
         'imageDriver' => 'imagick',
         'rememberedUserSessionDuration' => 'P1Y',
         'userSessionDuration' => 'P1D',
@@ -29,7 +29,6 @@ return array(
     // overrides for local dev url
     '.dev' => [
         'devMode' => true,
-        'imageDriver' => false,
 
         'environmentVariables' => array(
             'siteUrl' => '//davidstanleyillustration.dev:8888/',
@@ -39,11 +38,12 @@ return array(
     ],
 
     // overrides for production url
-    'www.davidstanleyillustration.com/' => [
+    'www.davidkstanley.studio/' => [
         'devMode' => false,
+        'siteUrl' => '//www.davidkstanley.studio/',
 
         'environmentVariables' => array(
-            'siteUrl' => '//www.davidstanleyillustration.com/',
+            'siteUrl' => '//www.davidkstanley.studio/',
             'basePath' => ''
         )
 
