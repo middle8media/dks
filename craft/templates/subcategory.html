@@ -11,7 +11,7 @@
                     <div class="post-media-wrap">
                         <div class="post-media-in-wrap">
                             <div class="post-media" data-grayscale="" data-grayscale-trans="1">
-                                <a href="{% if category.children | length %}{{ category.title | lower }}{% else %}{{ category.url }}{% endif %}">
+                                <a href="{% if category.children | length %}{{ category.title | lower }}/index.html{% else %}{{ category.url }}{% endif %}">
                                     {% for image in category.categoryCoverImage %}
                                         <img src="{{ image.getUrl }}" alt="{{ image.title }}" />
                                     {% endfor %}
@@ -21,9 +21,9 @@
                                 <div class="media-hovers-outer">
                                     <div class="media-hovers-inner">
                                         <h3 class="post-title">
-                                            <a href="{% if category.children | length %}{{ category.title | lower }}{% else %}{{ category.url }}{% endif %}">{{ category.title }}</a>
+                                            <a href="{% if category.children | length %}/subcategory.html{% else %}{{ category.url }}{% endif %}">{{ category.title }}</a>
                                         </h3>
-                                        <a href="{% if category.children | length %}{{ category.title | lower }}{% else %}{{ category.url }}{% endif %}" class="media-hover-link"></a>
+                                        <a href="{% if category.children | length %}/subcategory.html{% else %}{{ category.url }}{% endif %}" class="media-hover-link"></a>
                                     </div>
                                 </div>
                             </div>

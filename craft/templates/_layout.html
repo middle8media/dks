@@ -40,6 +40,11 @@
 
         <!-- Mobile Navigation & Logo -->
         <div class="m-nav-and-logo">
+
+            <a href="/" title="DKS Studio" class="site-name">
+                DKS
+            </a>
+
             <div class="m-nav-fold rf-button">
                 <i class="fa fa-angle-down"></i>
             </div>
@@ -54,7 +59,6 @@
                         {% set asset = generalInfo.logo.first() %}
                         {% for asset in generalInfo.logo %}
                             <img src="{{ asset.url }}" alt="DKS Logo">
-                            <img src="" alt="Hypnos">
                         {% endfor %}
                     </div>
                 </a>
@@ -94,7 +98,7 @@
                         <ul class="filters body-section">
                             {% nav category in craft.categories.group('portfolio') %}
                                 <li>
-                                    <a href="{{ category.url }}" class="{% if craft.request.lastSegment == category.slug %}active-filter-item{% endif %}">{{ category.title }}</a>
+                                    <a href="{% if category.children | length %}/subcategory.html{% else %}{{ category.url }}{% endif %}">{{ category.title }}</a>
                                     {% ifchildren %}
                                         <ul class="filters-children">
                                             {% children %}

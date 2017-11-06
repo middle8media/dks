@@ -20,7 +20,7 @@
 <article>
 
 	{% for image in entry.blogThumbnail %}
-		<img class="" src="{{ image.getUrl }}" alt="{{ entry.title }}"/>
+		<img class="featured-image" src="{{ image.getUrl }}" alt="{{ entry.title }}"/>
 	{% endfor %}
 
 	<header class="single-header blog-single-header inner-content">
@@ -37,10 +37,6 @@
 	<div class="single-content-wrap inner-content">
 		<div class="single-content clearfix">
 			{{ entry.blogBody }}
-		</div>
-
-		<div class="">
-			<a href="/blog">← Back to Blog</a>
 		</div>
 	</div>
 
