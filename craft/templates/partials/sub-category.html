@@ -1,18 +1,16 @@
-{% extends "_layout" %}
+<section id="portfolio-container" class="body-section" data-layout="fitRows" data-columns-rate="1" data-gutter-horz="17" data-gutter-vert="17">
 
-{% block content %}
+    {% set subCategories = craft.categories.descendantOf(category) %}
 
-    <!-- Portfolio Container -->
-    <section id="portfolio-container" class="body-section" data-layout="fitRows" data-columns-rate="1" data-gutter-horz="17" data-gutter-vert="17">
-
-        {% for category in craft.categories.group('portfolio').level(1) %}
+    {% for subCat in subCategories %}
+        {% if subCat.categoryCoverImage | length %}
             <article class="post-format-gallery portfolio-post">
                 <div class="portfolio-post-inner">
                     <div class="post-media-wrap">
                         <div class="post-media-in-wrap">
                             <div class="post-media" data-grayscale="" data-grayscale-trans="1">
-                                <a href="{% if category.children | length %}{{ category.title | lower }}/index.html{% else %}{{ category.url }}{% endif %}">
-                                    {% for image in category.categoryCoverImage %}
+                                <a href="{{ subCat.url }}">
+                                    {% for image in subCat.categoryCoverImage %}
                                         <img src="{{ image.getUrl }}" alt="{{ image.title }}" />
                                     {% endfor %}
                                 </a>
@@ -21,21 +19,20 @@
                                 <div class="media-hovers-outer">
                                     <div class="media-hovers-inner">
                                         <h3 class="post-title">
-                                            <a href="{% if category.children | length %}/subcategory.html{% else %}{{ category.url }}{% endif %}">{{ category.title }}</a>
+                                            <a href="{{ subCat.url }}">{{ subCat.title }}</a>
                                         </h3>
-                                        <a href="{% if category.children | length %}/subcategory.html{% else %}{{ category.url }}{% endif %}" class="media-hover-link"></a>
+                                        <a href="{{ subCat.url }}" class="media-hover-link"></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <h3 class="category-title">
-                            <a href="{{ category.url }}">{{ category.title }}</a>
+                            <a href="{{ subCat.url }}">{{ subCat.title }}</a>
                         </h3>
                     </div>
                 </div>
             </article>
-        {% endfor %}
+        {% endif %}
+    {% endfor %}
 
-    </section>
-
-{% endblock %}
+</section>

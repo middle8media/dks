@@ -1,0 +1,50 @@
+<!-- Inner Content Wrapper -->
+<div class="inner-content-wrap">
+
+    <!-- Portfolio Single Post -->
+    <article class="portfolio-single clearfix">
+
+        <div class="single-wrap body-section clearfix">
+
+            <header class="single-header portfolio-single-header inner-content">
+                <div class="title-and-meta" style="width:100%;">
+                    <h1 class="single-title">{{ category.title }}</h1>
+                </div>
+            </header>
+
+            <div class="single-content-wrap inner-content">
+
+                <div class="single-content clearfix">
+                    <div class="vc_row wpb_row vc_row-fluid">
+                        <div class="wpb_column vc_column_container vc_col-sm-12">
+                            <div class="vc_column-inner ">
+                                <div class="wpb_wrapper">
+                                    <div class="wpb_text_column wpb_content_element ">
+                                        <div class="wpb_wrapper">
+                                            {{ category.categoryDescription }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-slideshow">
+                {% for entry in craft.entries.section('portfolio').relatedTo(category) %}
+                    <div class="gallery-slide {% if entry.isHalfWidth %}half-width{% endif %}">
+                        {% for image in entry.portfolioImage %}
+                            <img src="{{ image.getUrl }}" alt="{{ entry.title }}" />
+                        {% endfor %}
+                        <p class="stacked-caption"><span>{{ entry.title }}</span></p>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </article>
+    <!-- Portfolio Single Post -->
+
+</div>
+<!-- end .inner-content-wrap -->

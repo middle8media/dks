@@ -98,7 +98,7 @@
                         <ul class="filters body-section">
                             {% nav category in craft.categories.group('portfolio') %}
                                 <li>
-                                    <a href="{% if category.children | length %}/subcategory.html{% else %}{{ category.url }}{% endif %}">{{ category.title }}</a>
+                                    <a href="{{ category.url }}">{{ category.title }}</a>
                                     {% ifchildren %}
                                         <ul class="filters-children">
                                             {% children %}
