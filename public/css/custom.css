@@ -114,6 +114,14 @@ p.coming-soon {
     display: table;
 }
 
+/*Client*/
+.client a {
+    color: #0645AD;
+}
+.client a:visited {
+    color: #663366;
+}
+
 /*Blog*/
 
 .featured-image {

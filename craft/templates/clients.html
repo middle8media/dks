@@ -20,8 +20,12 @@
                                     <div class="wpb_wrapper">
                                         <ul>
                                             {% for entry in row %}
-                                                <li>
-                                                    <a href="{{ entry.clientUrl }}">{{ entry.clientName }}</a>
+                                                <li class="client">
+                                                    {% if entry.clientUrl | length %}
+                                                        <a href="{{ entry.clientUrl }}">{{ entry.clientName }}</a>
+                                                    {% else %}
+                                                        {{ entry.clientName }}
+                                                    {% endif %}
                                                 </li>
                                             {% endfor %}
                                         </ul>
