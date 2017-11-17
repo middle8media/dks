@@ -10,7 +10,7 @@
         </div>
     </header>
 
-        <div class="vc_row wpb_row vc_row-fluid">
+        <div class="vc_row wpb_row vc_row-fluid divider">
             {% for row in craft.entries.section('clients').order('title') | batch(10) %}
                 <div class="wpb_column vc_column_container vc_col-sm-4">
                     <div class="wpb_wrapper">
@@ -33,6 +33,24 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="vc_row wpb_row vc_row-fluid">
+            {% for entry in craft.entries.section('testimonials') %}
+                <div class="wpb_column vc_column_container vc_col-sm-6">
+                    <div class="wpb_wrapper">
+                        <blockquote>
+                            {{ entry.testimonialQuote }}
+
+                            {% for block in entry.testimonialCitation.type('clientCitation') %}
+                                <footer>
+                                    — <cite><a href="{{ block.clientUrl }}">{{ block.clientName }}, {{ block.clientTitle }}, {{ block.clientCompany }}</a></cite>
+                                </footer>
+                            {% endfor %}
+                        </blockquote>
                     </div>
                 </div>
             {% endfor %}

@@ -122,6 +122,25 @@ p.coming-soon {
     color: #663366;
 }
 
+.divider {
+    margin-bottom: 24px !important;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+blockquote {
+    font-family: 'Open sans';
+    font-weight: normal;
+    color: #8d8d8d;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 24px !important;
+}
+
+blockquote p {
+    font-style: italic;
+    margin-bottom: 24px;
+}
 /*Blog*/
 
 .featured-image {
