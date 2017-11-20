@@ -40,6 +40,10 @@
 
 }
 
+[class*="vc_col-sm-"] {
+    margin-bottom: 24px;
+}
+
 /*Logo*/
 .logo-wrap {
     max-width: 83%;
@@ -141,6 +145,8 @@ blockquote p {
     font-style: italic;
     margin-bottom: 24px;
 }
+
+
 /*Blog*/
 
 .featured-image {
