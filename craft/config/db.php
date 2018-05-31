@@ -12,7 +12,7 @@ return array(
         'tablePrefix' => 'craft',
     ),
     // development database
-    '.dev' => array(
+    '.test' => array(
         'server' => 'localhost',
         'user' => 'root',
         'password' => 'root',

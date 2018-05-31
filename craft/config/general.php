@@ -27,11 +27,11 @@ return array(
     ],
 
     // overrides for local dev url
-    '.dev' => [
+    '.test' => [
         'devMode' => true,
 
         'environmentVariables' => array(
-            'siteUrl' => '//davidstanleyillustration.dev:8888/',
+            'siteUrl' => '//davidstanleyillustration.test:8888/',
             'basePath' => '/Users/M8M/Sites/dks/public/'
         )
 
